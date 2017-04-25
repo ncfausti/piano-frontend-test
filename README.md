@@ -8,7 +8,7 @@ The objective is to demonstrate competent frontend skills with some light backen
 - Create and access a simple API
 - Use a JS framework to create a frontend to manage the API data
 
-Fork this repo, and using a frontend Javascript framework of your choice (React/Angular/Ember/Bootstrap) and a package manager of your choice (Webpack/Gulp/Grunt) in a Node environment, set up a basic user interface that allows a user to CRUD (create, read/list, update, and delete) videos as well as reorder them. Setup an interface that returns a list of videos to the user. If you are comfortable setting up a real backend for this using your preferred Node API framework (Express/hapi/koa/etc), that is ideal. If you don't feel comfortable setting up a live backend interface, create a mock interface that returns a static list of videos by simply embedding the videos in the page, e.g.
+*Fork this repo*, and using a frontend Javascript framework of your choice (React/Angular/Ember/Bootstrap) and a package manager of your choice (Webpack/Gulp/Grunt) in a Node environment, set up a basic user interface that allows a user to CRUD (create, read/list, update, and delete) videos as well as reorder them. Setup an interface that returns a list of videos to the user. If you are comfortable setting up a real backend for this using your preferred Node API framework (Express/hapi/koa/etc), that is ideal. If you don't feel comfortable setting up a live backend interface, create a mock interface that returns a static list of videos by simply embedding the videos in the page, e.g.
 
 ```
 MockBackend.listVideos = function() {
@@ -43,6 +43,6 @@ Each video should have a delete button which deletes that video from the videos.
 
 There should be a "Create" button that allows a user to add a new video to the list. Again, a live backend should be able to accept this. The mock backend should just just add it to the end of the list.
 
-When your application is complete, create a pull request that will merge your code back to this repo in a branch named `<your-first-name>-<your-last-name>-<date>`.
+When your application is complete, *create a pull request that will merge your code back to this repo in a branch named `<your-first-name>-<your-last-name>-<date>`*.
 
-Bonus: The ability to re-order the videos and have the sortOrder updated.
+*Bonus: The ability to re-order the videos and have the sortOrder updated.*
