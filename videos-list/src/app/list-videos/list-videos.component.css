@@ -1,0 +1,25 @@
+img {
+    width: 200px;
+    height:150px;
+}
+
+.page-title {
+  padding-bottom: 10px;
+}
+
+.media-footer {
+  margin-top: 90px;
+}
+
+.video-panel {
+  margin-bottom: 25px;
+}
+
+.move-up-btn {
+  margin-top: 20px;
+}
+
+.move-down-btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

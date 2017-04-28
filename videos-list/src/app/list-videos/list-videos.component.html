@@ -1,0 +1,36 @@
+
+
+<div *ngIf="videoService.videos" class="container">
+  <h2 class="page-title">Best Rap Videos of the 2000's &nbsp; &nbsp; <button type="button" (click)="showConfirm()" class="btn btn-primary">Add New Video</button></h2>
+
+  <div *ngFor="let vid of videoService.videos" class="panel video-panel">
+    <div class="media panel-body">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object pull-left" src="{{vid.coverImage}}" alt="Snoop Dogg" (click)="selectVideo(vid)">
+        </a>
+      </div>
+      <div class="media-body">
+        <div class="col-sm-6" (click)="selectVideo(vid)">
+          <h4 class="media-heading">{{vid.sortOrder}}. {{vid.title}} &nbsp; &nbsp; </h4>
+          {{vid.description}}
+          <div class="media-footer">
+            Posted: {{vid.publishedDate}}
+          </div>
+        </div>
+        <div class="col-sm-1">
+          <button (click)="deleteVideo(vid)" type="button" class="btn btn-danger btn-sm">x</button>
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-1">
+          <button *ngIf="vid.sortOrder != 1" (click)="moveVideoUp(vid)" type="button" class="btn btn-success btn-circle btn-lg move-up-btn"><i class="glyphicon glyphicon-arrow-up"></i></button>
+          <br>
+          <button *ngIf="vid.sortOrder != videoService.videos.length" (click)="moveVideoDown(vid)" type="button" class="btn btn-success btn-circle btn-lg move-down-btn"><i class="glyphicon glyphicon-arrow-down"></i></button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
