@@ -24,4 +24,4 @@ npm start
 
 I have significant experience with Django as a backend framework, so I initially built out a RESTful API using the Django REST framework. I have included the source code for this API in the dj-app folder, and the server for this API is currently running at http://kevinearl.pythonanywhere.com/.
 
-Per my email conversation with Greg Kristofer, it was suggested that I re-build this API using Node.js due to the Piano team's familiarity with Node. I will hopefully be completing this over the coming days, depending on time constraints.
+Per my email conversation with Greg Kristofer, it was suggested that I re-build this API using Node.js due to the Piano team's familiarity with Node. I will hopefully be completing this over the coming days, depending on time constraints. I have included the in-progress Node.js / Express code I have been working from in the folder 'mean-app'.
