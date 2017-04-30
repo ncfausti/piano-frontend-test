@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { ListVideosComponent } from './list-videos/list-videos.component';
 import { EditVideoModalComponent } from './edit-video-modal/edit-video-modal.component';
 import { VideoService } from './video.service';
+import { YoutubeService } from './youtube.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { VideoService } from './video.service';
     //ModalModule.forRoot()
   ],
   providers: [
-    VideoService
+    VideoService,
+    YoutubeService
   ],
   bootstrap: [
     AppComponent,

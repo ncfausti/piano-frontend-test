@@ -5,6 +5,11 @@ img {
 
 .page-title {
   padding-bottom: 10px;
+  font-family: 'Audiowide', cursive;
+  display: inline-block;
+  color: white;
+  font-size: 40px;
+  padding-right: 20px;
 }
 
 .media-footer {
@@ -23,3 +28,10 @@ img {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.add-btn {
+  display: inline-block;
+  margin-top: -2vh;
+}
+
+

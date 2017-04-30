@@ -1,7 +1,6 @@
-
-
 <div *ngIf="videoService.videos" class="container">
-  <h2 class="page-title">Best Rap Videos of the 2000's &nbsp; &nbsp; <button type="button" (click)="showConfirm()" class="btn btn-primary">Add New Video</button></h2>
+  <h2 class="page-title"><i class="fa fa-microphone" aria-hidden="true"></i> &nbsp;Best Rap Videos of the 2000's &nbsp; &nbsp; </h2>
+  <button type="button" (click)="showConfirm()" class="btn btn-lg btn-primary add-btn">Add New Video</button>
 
   <div *ngFor="let vid of videoService.videos" class="panel video-panel">
     <div class="media panel-body">

@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { DialogComponent, DialogService } from "ng2-bootstrap-modal";
 
-import { Video } from "../video.object"
-import { VideoService } from "../video.service"
+import { Video } from "../video.object";
+import { VideoService } from "../video.service";
+import { YoutubeService } from "../youtube.service";
+
+import 'rxjs/add/operator/debounceTime.js';
+
 
 export interface ConfirmModel {
   editType:string;
@@ -37,13 +41,20 @@ export class EditVideoModalComponent extends DialogComponent<ConfirmModel, Video
   //};
 
   pubDate;
+  results;
+  searchText = '';
+  search = new FormControl();
 
-  constructor(dialogService: DialogService, private formBuilder: FormBuilder, public videoService: VideoService) {
+  constructor(dialogService: DialogService, private formBuilder: FormBuilder, public videoService: VideoService, public youtubeService: YoutubeService) {
     super(dialogService);
+
 
   }
 
   ngOnInit() {
+    this.results = this.search.valueChanges
+      .debounceTime(150)
+      .switchMap(text => this.youtubeService.search(text));
 
     this.videoForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -74,6 +85,17 @@ export class EditVideoModalComponent extends DialogComponent<ConfirmModel, Video
 
 
 
+  }
+
+  selectVideo(video) {
+      this.selectedVideo = new Video();
+      this.selectedVideo.title = video.snippet.title;
+      this.videoForm.controls['title'].setValue(this.selectedVideo['title']);
+
+      this.testImage = video.snippet.thumbnails.default.url;
+      this.videoForm.controls['coverImage'].setValue(this.testImage);
+
+      console.log(this.selectedVideo)
   }
 
   submitEdits() {

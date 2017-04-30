@@ -1,10 +1,14 @@
 .modal-content {
   margin-left: -10vw;
-  width : 75vw;
+  width : 60vw;
 }
 
 .modal-input {
   width: 100%;
+}
+
+.search-input {
+  width: 45%;
 }
 
 .full button span {
@@ -17,3 +21,4 @@
   border-radius: 32px;
   color: black;
 }
+
