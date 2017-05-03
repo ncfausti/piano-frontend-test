@@ -1,0 +1,106 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+
+    <div *ngIf="!selectedVideo" style="height: 500px;" class="youtube-search-panel">
+      <div class="modal-header">
+         <button type="button" class="close" (click)="close()" >&times;</button>
+         <h2 class="modal-title">YouTube Search</h2>
+       </div>
+
+      <div class="modal-body">
+        <h4>Click on a search result to edit details</h4>
+        <input type=text [formControl]="search" class="search-input" placeholder="Enter video title here">
+        <div *ngFor="let vid of results | async">
+          <div (click)="selectVideo(vid)" class="panel-defaul">
+            <div class="panel-body">
+              <h3 >{{vid.snippet.title}}</h3>
+              <p>{{vid.snippet.title}}</p>
+              <img [src]="vid.snippet.thumbnails.default.url">
+            </div>
+
+          </div>
+        <!--<div *ng-for="video of results | async">-->
+
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="selectedVideo" class="edit-video-panel">
+
+      <form novalidate (ngSubmit)="confirm(videoForm)" [formGroup]="videoForm">
+
+       <div class="modal-header">
+         <button type="button" class="close" (click)="close()" >&times;</button>
+         <h2 *ngIf="editType=='add'" class="modal-title">Add a new video</h2>
+         <h2 *ngIf="editType=='edit'" class="modal-title">Currently editing:  {{selectedVideo.title}}</h2>
+       </div>
+
+       <div class="modal-body">
+         <div class="media panel-body">
+          <div class="media-left">
+            <a href="#" *ngIf="selectedVideo">
+              <img class="media-object pull-left" src="{{testImage}}" alt="Snoop Dogg">
+            </a>
+            <!--<div class="row">-->
+              <!--<label>-->
+                <!--<span>Cover Image URL</span>-->
+                <!--<input type="text" formControlName="coverImage" placeholder="Enter a url for cover image">-->
+              <!--</label>-->
+            <!--</div>-->
+          </div>
+          <div class="media-body">
+            <div class="col-sm-10" >
+              <h4 class="media-heading">
+                <label>
+                  <span>Title</span>
+                  <input class="modal-input" type="text" formControlName="title" placeholder="Enter a title for video">
+                </label>
+              </h4>
+              <h4 class="media-heading">
+                <label>
+                  <span>Description</span>
+                  <textarea class="modal-input" rows=4 formControlName="description" placeholder="Enter a brief description"></textarea>
+                </label>
+              </h4>
+              <h4 class="media-heading">
+                <label>
+                    <span>Published Date</span>
+                    <input (click)="showDatepicker()" class="modal-input" type="text" placeholder="{{ pubDate }}">
+
+                </label>
+                <div *ngIf="editDate" class="col-sm-10" style="display:inline-block; min-height:220px;">
+                  <datepicker formControlName="publishedDate" (change)="saveDate()" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled" (activeDateChange)="saveDate()"></datepicker>
+                </div>
+                <div *ngIf="editDate" class="col-sm-2" >
+                  <button (click)="saveDate()" type="button" class="btn btn-sm btn-info" style="margin-top: 1.25vh;">Save</button>
+
+                </div>
+              </h4>
+              <h4 class="media-heading">
+                <label>
+                  <span>Cover Image URL</span>
+                  <input class="modal-input" type="text" formControlName="coverImage" (change)="updateImage()" placeholder="Enter a url for cover image">
+                </label>
+              </h4>
+
+
+            </div>
+            <!--<div class="col-sm-1">-->
+              <!--<button (click)="deleteVideo(vid)" type="button" class="btn btn-danger btn-sm">x</button>-->
+            <!--</div>-->
+          </div>
+
+        </div>
+
+       </div>
+
+       <div class="modal-footer">
+         <button type="button" class="btn btn-primary" (click)="submitEdits()">OK</button>
+         <button type="button" class="btn btn-default" (click)="close()" >Cancel</button>
+       </div>
+
+      </form>
+    </div>
+   </div>
+</div>

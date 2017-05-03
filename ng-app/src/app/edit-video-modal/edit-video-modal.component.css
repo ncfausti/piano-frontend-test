@@ -1,0 +1,24 @@
+.modal-content {
+  margin-left: -10vw;
+  width : 60vw;
+}
+
+.modal-input {
+  width: 100%;
+}
+
+.search-input {
+  width: 45%;
+}
+
+.full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+  }
+.partially button span {
+  background-color: orange;
+  border-radius: 32px;
+  color: black;
+}
+
