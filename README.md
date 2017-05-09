@@ -43,6 +43,6 @@ Each video should have a delete button which deletes that video from the videos.
 
 There should be a "Create" button that allows a user to add a new video to the list. Again, a live backend should be able to accept this. The mock backend should just just add it to the end of the list.
 
-When your application is complete, **create a pull request that will merge your code back to this repo in a branch named** `<your-first-name>-<your-last-name>-<date>`.
+When your application is complete, **create a pull request that will merge your code back to this repo in a branch named `<your-first-name>-<your-last-name>`. Do not create a PR to `master`.**
 
 *Bonus: The ability to re-order the videos and have the sortOrder updated.*
