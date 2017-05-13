@@ -1,3 +1,4 @@
+require('./db/connect')
 const bodyParser = require('body-parser');
 const express = require('express');
 const videos = require('./routes/videos');
