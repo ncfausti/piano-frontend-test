@@ -3,5 +3,9 @@
   "author": "Alexi Maschas",
   "version": "0.0.1",
   "description": "Piano Frontend Technical Test",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  }
 }
