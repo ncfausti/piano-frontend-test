@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(express.static('public/dest')); 
+app.use(express.static('public/src')); 
 
 app.use('/', videos);
 app.listen(8080, function() {
