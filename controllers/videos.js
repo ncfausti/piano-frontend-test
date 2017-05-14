@@ -13,7 +13,7 @@ const initVideos = require('../models/data/init_videos');
      */
     list: function(req, res) {
         console.log('inside controller')
-        videoModel.find(function(err, videos){
+        videoModel.find().sort([['sortOrder', 1]]).exec(function(err, videos){
             console.log('asdfa')
             if(err) {
                 return res.json(500, {
