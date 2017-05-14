@@ -5,8 +5,8 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SearchableTable from './SearchableTable';
+import VideoList from './VideoList';
 import {data} from './data';
 
 // Filterable CheatSheet Component
-ReactDOM.render( <SearchableTable data={data}/>, document.getElementById('searchableTable') );
+ReactDOM.render( <VideoList data={data}/>, document.getElementById('video-list') );

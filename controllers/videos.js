@@ -1,5 +1,5 @@
 const videoModel = require('../models/videos.js');
-const initVideos = require('../models/data/init_videos')
+const initVideos = require('../models/data/init_videos');
 
 
 /**
