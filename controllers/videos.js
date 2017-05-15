@@ -88,6 +88,7 @@ const initVideos = require('../models/data/init_videos');
      */
     update: function(req, res) {
         var id = req.params.id;
+        console.log('inside update')
         videoModel.findOne({_id: id}, function(err, video){
             if(err) {
                 return res.json(500, {
@@ -102,9 +103,9 @@ const initVideos = require('../models/data/init_videos');
             }
 
             video.title =  req.body.title ? req.body.title : video.lastName;
-			video.publishedDate =  req.body.publishedDate ? req.body.publishedDate : speaker.publishedDate;
-			video.description =  req.body.description ? req.body.description : speaker.description;
-			video.sortOrder =   req.body.sortOrder ? req.body.sortOrder : speaker.sortOrder;
+			video.publishedDate =  req.body.publishedDate ? req.body.publishedDate : video.publishedDate;
+			video.description =  req.body.description ? req.body.description : video.description;
+			video.sortOrder =   req.body.sortOrder ? req.body.sortOrder : video.sortOrder;
 		
 			
             video.save(function(err, video){

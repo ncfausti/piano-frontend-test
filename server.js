@@ -5,7 +5,7 @@ const videos = require('./routes/videos');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(express.static('public/src')); 
+app.use('/public', express.static('public')); 
 
 app.use('/', videos);
 app.listen(8080, function() {

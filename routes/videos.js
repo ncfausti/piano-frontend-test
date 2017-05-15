@@ -19,4 +19,26 @@ router.get('/videos', function(req, res) {
     videoController.list(req, res);
 });
 
+/*
+ * POST
+ */
+router.post('/videos', function(req, res) {
+    console.log(videoController)
+    videoController.create(req, res);
+});
+/*
+ * PUT
+ */
+router.put('/videos/:id', function(req, res) {
+    console.log(videoController)
+    videoController.update(req, res);
+});
+/*
+ * DELETE
+ */
+router.delete('/videos/:id', function(req, res) {
+    console.log(videoController)
+    videoController.remove(req, res);
+});
+
 module.exports = router;
