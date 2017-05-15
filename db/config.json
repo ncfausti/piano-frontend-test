@@ -1,0 +1,11 @@
+{
+    "production": {
+        "url": "mongodb://localhost/video-crud-prod"
+    },
+    "test": {
+        "url": "mongodb://localhost/video-crud-test"
+    },
+    "development": {
+        "url": "mongodb://localhost/video-crud-dev"
+    }
+}

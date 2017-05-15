@@ -1,0 +1,8 @@
+
+body{
+    font-size:2em;
+}
+
+ul > li > span > a{
+       font-style: oblique;
+}

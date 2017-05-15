@@ -1,0 +1,36 @@
+ [
+  {
+   "title": "My video #1",
+   "publishedDate": "2015-08-13 00:00:00",
+   "description": "The description #1",
+   "coverImage": "http://link/to/image1",
+   "sortOrder": 0
+}, {
+   "title": "My video #2",
+   "publishedDate": "2015-08-13 00:00:00",
+   "description": "The description #2",
+   "coverImage": "http://link/to/image2",
+   "sortOrder": 1
+},
+{
+   "title": "My video #3",
+   "publishedDate": "2015-08-13 00:00:00",
+   "description": "The description #3",
+   "coverImage": "http://link/to/image2",
+   "sortOrder": 2
+},
+{
+   "title": "My video #4",
+   "publishedDate": "2015-08-13 00:00:00",
+   "description": "The description #3",
+   "coverImage": "http://link/to/image3",
+   "sortOrder": 3
+},
+{
+   "title": "My video #5",
+   "publishedDate": "2015-08-13 00:00:00",
+   "description": "The description #4",
+   "coverImage": "http://link/to/image3",
+   "sortOrder": 4
+}
+ ]
