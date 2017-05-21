@@ -1,0 +1,22 @@
+{
+  "lint": {
+    "rules": [
+      "polymer-2"
+    ]
+  },
+  "entrypoint": "index.html",
+  "shell": "src/app/app-app/app-app.html",
+  "sources": [
+    "src/app/**/*",
+    "bower.json"
+  ],
+  "includeDependcies": [
+    "bower_components/webcomponentsjs/webcomponents-lite.js"
+  ],
+  "builds": [{
+    "bundle": true,
+    "js": {"compile": true, "minify": true},
+    "css": {"minify": true},
+    "html": {"minify": true}
+  }]
+}
