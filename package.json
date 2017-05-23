@@ -1,7 +1,26 @@
 {
   "name": "piano-frontend-test",
-  "author": "Alexi Maschas",
-  "version": "0.0.1",
-  "description": "Piano Frontend Technical Test",
-  "private": true
+  "description": "",
+  "version": "1.0.0",
+  "author": "Max Knee <maxknee@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "dev-server": "polymer serve & nodemon src/server/server.js",
+    "build": "polymer build"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "bunyan": "^1.8.10",
+    "cors": "^2.8.3",
+    "dtrace-provider": "^0.8.1",
+    "express": "^4.15.3",
+    "global": "^4.3.2",
+    "mongoose": "^4.9.9",
+    "polymer-cli": "^1.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }

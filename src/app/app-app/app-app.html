@@ -1,0 +1,42 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../app-fetch/app-fetch.html">
+<link rel="import" href="../app-list/app-list.html">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<dom-module id="app-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-family: 'Roboto',  sans-serif;
+      }
+
+      h2 {
+
+      }
+    </style>
+    <h2>[[prop1]]!</h2>
+    <app-fetch data="{{videos}}"></app-fetch>
+    <app-list list="{{videos}}"></app-list>
+
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class AppApp extends Polymer.Element {
+      static get is() { return 'app-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'Video List Editor'
+          },
+        };
+      }
+    }
+
+    window.customElements.define(AppApp.is, AppApp);
+  </script>
+</dom-module>

@@ -1,0 +1,36 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-fetch">
+  <template>
+    <style></style>
+  </template>
+
+  <script>
+    class AppFetch extends Polymer.Element {
+      static get is() { return 'app-fetch'; }
+      static get properties() {
+        return {
+          data: {
+            type: Array,
+             notify: true,
+          },
+        }
+      }
+      constructor() {
+        super();
+        fetch('http://localhost:8080/api/videos', {
+          mode: 'cors',
+        }).then((res) => {
+          console.log(res);
+          return res.json();
+        }).then((json) => {
+          this.set('data', json);
+        }).catch(err => {
+          console.log(err);
+        })
+      }
+    }
+
+    window.customElements.define(AppFetch.is, AppFetch)
+  </script>
+</dom-module>

@@ -1,0 +1,147 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/iron-form/iron-form.html">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+<dom-module id="app-list">
+  <template>
+    <style>
+      :host {
+        font-family: 'Roboto',  sans-serif;
+      }
+
+      input {
+        display: block;
+        margin: 5px auto;
+      }
+
+      img {
+        margin: 10px auto;
+      }
+
+      paper-button {
+        display: block;
+      }
+
+      paper-button.red {
+        background: red;
+        font-weight: bold;
+      }
+
+      paper-button.blue {
+        background: blue;
+      }
+
+      paper-button.green {
+        background: green;
+      }
+    </style>
+    <template is="dom-repeat" items="{{list}}">
+      <paper-item raised on-click="openDialog">{{item.title}}</paper-item>
+      <paper-dialog id="form{{index}}">
+        <form is="iron-form" id="form{{item._id}}">
+          <input hidden name="formId" value="{{item._id}}"></input>
+          <h2><input type="text" name="title" label="Title" value="{{item.title}}"></input></h2>
+          <input type="text" name="description" label="Description" value="{{item.description}}"></input>
+          <input type="text" name="publishDate" label="Date" value="{{item.publishDate}}"></input>
+          <img src="{{item.coverImage}}">
+          <paper-button dialog-confirm raised type="submit" on-click="serialize" class="green">Submit</paper-button>
+          <paper-button dialog-dismiss autofocus class="blue">Cancel</paper-button>
+          <paper-button raised class="red" type="delete" on-click="deleteVideo">Delete</paper-button>
+        </form>
+      </paper-dialog>
+    </template>
+
+    <paper-button raised on-click="openCreateForm" class="blue">Create Video</paper-button>
+    <paper-dialog id="createVideo">
+      <form id="createForm">
+        <input name="title" type="text" label="Title"></input>
+        <input name="description" type="text" "Description"></input>
+        <input name="coverImage" type="text" "Cover Image"></input>
+        <input name="sortOrder" type="tel" "Sort Order"></input>
+        <paper-button dialog-confirm raised type="submit" on-click="createVideo" class="green">Submit</paper-button>
+      </form>
+    </paper-dialog>
+  </template>
+
+  <script>
+    class AppList extends Polymer.Element {
+      static get is() { return 'app-list'; }
+      static get properties() {
+        return {
+          list: {
+            type: Array
+          },
+        }
+      }
+      createVideo() {
+        let formData = {};
+        let form = this.shadowRoot.querySelector('#createForm');
+        for (let i = 0; i < form.length; i++) {
+            formData[form[i].name] = form[i].value;
+        }
+
+        fetch('http://localhost:8080/api/videos', {
+          method: 'post',
+          headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }),
+          body: JSON.stringify(formData),
+        }).then(res => {
+          return res.json();
+        }).then(json => {
+          console.log(json);
+        })
+      }
+      deleteVideo() {
+        let formId = event.path[1].id;
+        let form = this.shadowRoot.querySelector(`#${formId}`);
+        let videoId = form[0].value;
+        fetch(`http://localhost:8080/api/videos/${videoId}`, {
+          method: 'delete',
+        }).then(res => {
+          return res.json();
+        }).then(json => {
+          console.log(json);
+        });
+      }
+      openCreateForm() {
+        this.shadowRoot.querySelector('#createVideo').toggle();
+      }
+      openDialog() {
+        let modalId = event.model.children[3].id;
+        this.shadowRoot.querySelector(`#${modalId}`).toggle();
+      }
+      serialize() {
+        let formId = event.path[1].id;
+        let form = this.shadowRoot.querySelector(`#${formId}`);
+        this.submitForm(form, formId);
+      }
+      submitForm(form, formId) {
+        let formData = {};
+        let videoId = form[0].value;
+        for (let i = 0; i < form.length; i++) {
+          formData[form[i].name] = form[i].value;
+        }
+        fetch(`http://localhost:8080/api/videos/${videoId}`, {
+          method: 'put',
+          headers: new Headers({
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }),
+          body: JSON.stringify(formData),
+        }).then(res => {
+          return res.json();
+        }).then(json => {
+          console.log(json);
+          this.shadowRoot.querySelector(`#form${formId}`).innerText = JSON.stringify(json);
+        });
+      }
+    }
+    window.customElements.define(AppList.is, AppList);
+  </script>
+</dom-module>
